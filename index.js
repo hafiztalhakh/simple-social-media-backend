@@ -33,7 +33,9 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-// const upload = multer({ storage });
+const upload = multer({ storage });
+
+app.post("/auth/register", upload.single("picture"), register);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
